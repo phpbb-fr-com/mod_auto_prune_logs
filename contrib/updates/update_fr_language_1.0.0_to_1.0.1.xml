@@ -75,56 +75,18 @@
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/install_auto_prune_logs.php" to="install_auto_prune_logs.php" />
-			<file from="root/include/hooks/hook_auto_prune_logs.php" to="include/hooks/hook_auto_prune_logs.php" />
-			<file from="root/language/en/mods/info_acp_auto_prune_logs.php" to="language/en/mods/info_acp_auto_prune_logs.php" />
-			<file from="root/umil/*.*" to="umil/*.*" />
+			<file from="root/language/fr/mods/info_acp_auto_prune_logs.php" to="language/fr/mods/info_acp_auto_prune_logs.php" />
 		</copy>
-		<open src="common.php">
+		<open src="language/fr/acp/board.php">
 			<edit>
-				<remove><![CDATA[if (time() > $config['prune_log_next_time'])
-{
-	if ($config['prune_admin_log_day'])
-	{
-		$sql = 'DELETE FROM ' . LOG_TABLE . '
-			WHERE log_type = 0
-			AND log_time < ' . (time() - $config['prune_admin_log_day']*86400);
-		$db->sql_query($sql);
-	}
-
-	if ($config['prune_mod_log_day'])
-	{
-		$sql = 'DELETE FROM ' . LOG_TABLE . '
-			WHERE log_type = 1
-			AND log_time < ' . (time() - $config['prune_mod_log_day']*86400);
-		$db->sql_query($sql);
-	}
-
-	$sql = 'UPDATE ' . CONFIG_TABLE . "
-		SET config_value = '" . (time() + $config['prune_log_day']*86400) . "'
-		WHERE config_name = 'prune_log_next_time'";
-	$db->sql_query($sql);
-}]]></remove>
-			</edit>
-		</open>
-		<open src="includes/acp/acp_board.php">
-			<edit>
-				<find><![CDATA[
-						'legend3'				=> 'ACP_CAT_MAINTENANCE',
-						'prune_admin_log_day'	=> array('lang' => 'AUTO_PRUNE_ADMIN_LOG',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-						'prune_mod_log_day'		=> array('lang' => 'AUTO_PRUNE_MOD_LOG',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-						'prune_log_day'			=> array('lang' => 'AUTO_PRUNE_LOG_DAYS',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => false, 'append' => ' ' . $user->lang['DAYS']),]]></find>
-				<action type="replace-with"><![CDATA[//-- mod : Auto Prune Logs --------------------------------------------------------
-//-- add
-						'legend3'				=> 'ACP_CAT_MAINTENANCE',
-						'prune_admin_log_day'	=> array('lang' => 'AUTO_PRUNE_ADMIN_LOG',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-						'prune_mod_log_day'		=> array('lang' => 'AUTO_PRUNE_MOD_LOG',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
-						'prune_log_day'			=> array('lang' => 'AUTO_PRUNE_LOG_DAYS',	'validate' => 'int',	'type' => 'text:3:4', 'explain' => false, 'append' => ' ' . $user->lang['DAYS']),
-//-- end : Auto Prune Logs --------------------------------------------------------]]></action>
-			</edit>
-			<edit>
-								<find><![CDATA[						'legend{%:1}'					=> 'ACP_SUBMIT_CHANGES',]]></find>
-				<action type="operation">%:1 +1</action>
+				<remove><![CDATA[// Maintenance settings
+$lang = array_merge($lang, array(
+	'AUTO_PRUNE_ADMIN_LOG'			=> 'Ancienneté maximale des entrées du journal d’administration',
+	'AUTO_PRUNE_ADMIN_LOG_EXPLAIN'	=> 'Toutes les actions répertoriés dans le journal d’administration datant d\'avant cette valeur seront supprimées. Laissez 0 pour désactiver cette tâche',
+	'AUTO_PRUNE_MOD_LOG'			=> 'Ancienneté maximale des entrées du journal de modération',
+	'AUTO_PRUNE_MOD_LOG_EXPLAIN'	=> 'Toutes les actions répertoriés dans le journal de modération datant d’avant cette valeur seront supprimées. Laissez 0 pour désactiver cette tâche',
+	'AUTO_PRUNE_LOG_DAYS'			=> 'Intervalle entre chaque vérification',
+));]]></remove>
 			</edit>
 		</open>
 		<php-installer><![CDATA[install_auto_prune_logs.php]]></php-installer>

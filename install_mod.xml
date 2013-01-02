@@ -8,7 +8,7 @@
 		<title lang="fr"><![CDATA[Délestage automatique des journaux]]></title>
 		<description lang="en"><![CDATA[This MOD allows you to schedule an automatic prune of entries of Administration log and Moderation log, which are older than X days. Configuration through the ACP.]]></description>
 		<description lang="fr"><![CDATA[Ce MOD permet de planifier un délestage automatique des entrées des journaux d'administration et modération, qui remontent à plus de X jours définissables depuis l'administration]]></description>
-		<author-notes lang="en"><![CDATA[A idea from Lolovoisin]]></author-notes>
+		<author-notes lang="en"><![CDATA[A idea of Lolovoisin]]></author-notes>
 		<author-notes lang="fr"><![CDATA[Une idée le Lolo le bon voisin]]></author-notes>
 		<github><![CDATA[https://github.com/phpbb-fr-com/mod_auto_prune_logs]]></github>
 		<author-group>
@@ -73,48 +73,17 @@
 			<link type="language" href="./contrib/languages/fr.xml" lang="fr">Français</link>
 			<link type="contrib" href="./contrib/updates/update_1.0.0_to_1.0.1.xml" lang="en">Update from 1.0.0 to 1.0.1</link>
 			<link type="contrib" href="./contrib/updates/update_1.0.0_to_1.0.1.xml" lang="fr">Mise à jour de la version 1.0.0 à 1.0.1</link>
+			<link type="contrib" href="./contrib/updates/update_fr_language_1.0.0_to_1.0.1.xml" lang="en">French language update from 1.0.0 to 1.0.1</link>
+			<link type="contrib" href="./contrib/updates/update_fr_language_1.0.0_to_1.0.1.xml" lang="fr">Mise à jour des fichiers de langue Français de la version 1.0.0 à 1.0.1</link>
 		</link-group>
 	</header>
 	<action-group>
 		<copy>
 			<file from="root/install_auto_prune_logs.php" to="install_auto_prune_logs.php" />
-			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*" />
+			<file from="root/include/hooks/hook_auto_prune_logs.php" to="include/hooks/hook_auto_prune_logs.php" />
+			<file from="root/language/en/mods/info_acp_auto_prune_logs.php" to="language/en/mods/info_acp_auto_prune_logs.php" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
-		<open src="common.php">
-			<edit>
-				<find><![CDATA[?>]]></find>
-				<action type="before-add"><![CDATA[//-- mod : Auto Prune Logs --------------------------------------------------------
-//-- add
-$prune_log_next_time = (!empty($config['prune_log_next_time'])) ? $config['prune_log_next_time'] : 0;
-$prune_log_day = (!empty($config['prune_log_day'])) ? $config['prune_log_next_time'] : 0;
-
-if (time() > $prune_log_next_time)
-{
-	if (!empty($config['prune_admin_log_day']))
-	{
-		$sql = 'DELETE FROM ' . LOG_TABLE . '
-			WHERE log_type = 0
-			AND log_time < ' . (time() - (int) $config['prune_admin_log_day'] * 86400);
-		$db->sql_query($sql);
-	}
-
-	if (!empty($config['prune_mod_log_day']))
-	{
-		$sql = 'DELETE FROM ' . LOG_TABLE . '
-			WHERE log_type = 1
-			AND log_time < ' . (time() - (int) $config['prune_mod_log_day'] * 86400);
-		$db->sql_query($sql);
-	}
-
-	if (!empty($config['prune_log_next_time']))
-	{
-		set_config('prune_log_next_time', (time() + (int) $prune_log_day * 86400), 1);
-	}
-}
-//-- end : Auto Prune Logs --------------------------------------------------------]]></action>
-			</edit>
-		</open>
 		<open src="includes/acp/acp_board.php">
 			<edit>
 				<find><![CDATA[						'warnings_expire_days'	=> array('lang' => 'WARNINGS_EXPIRE',		'validate' => 'int',	'type' => 'text:3:4', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),]]></find>
@@ -129,22 +98,6 @@ if (time() > $prune_log_next_time)
 			<edit>
 				<find><![CDATA[						'legend{%:1}'					=> 'ACP_SUBMIT_CHANGES',]]></find>
 				<action type="operation">%:1 +1</action>
-			</edit>
-		</open>
-		<open src="language/en/acp/board.php">
-			<edit>
-				<find><![CDATA[?>]]></find>
-				<action type="before-add"><![CDATA[//-- mod : Auto Prune Logs --------------------------------------------------------
-//-- add
-// Maintenance settings
-$lang = array_merge($lang, array(
-	'AUTO_PRUNE_ADMIN_LOG'			=> 'Maximum age of the admin log entries',
-	'AUTO_PRUNE_ADMIN_LOG_EXPLAIN'	=> 'All actions listed in the admin log prior to this value will be deleted. Set this value to 0 to disable the task.',
-	'AUTO_PRUNE_MOD_LOG'			=> 'Ancienneté maximale des entrées du journal de modération',
-	'AUTO_PRUNE_MOD_LOG_EXPLAIN'	=> 'All actions listed in the moderation log prior to this value will be deleted. Set this value to 0 to disable the task.',
-	'AUTO_PRUNE_LOG_DAYS'			=> 'Interval between each check',
-));
-//-- end : Auto Prune Logs --------------------------------------------------------]]></action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[install_auto_prune_logs.php]]></php-installer>
