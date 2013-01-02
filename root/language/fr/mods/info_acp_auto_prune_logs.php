@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* auto_prune_logs.php [French]
+* info_acp_auto_prune_logs.php [French]
 *
 * @package Auto Prune Logs
 * @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
@@ -40,6 +40,18 @@ if (empty($lang) || !is_array($lang))
 // Some characters you may want to copy&paste:
 // ’ « » “ ” …
 //
+
+/*
+* Maintenance settings
+*/
+
+$lang = array_merge($lang, array(
+	'AUTO_PRUNE_ADMIN_LOG'			=> 'Maximum age of the admin log entries',
+	'AUTO_PRUNE_ADMIN_LOG_EXPLAIN'	=> 'All actions listed in the admin log prior to this value will be deleted. Set this value to 0 to disable the task.',
+	'AUTO_PRUNE_MOD_LOG'			=> 'Ancienneté maximale des entrées du journal de modération',
+	'AUTO_PRUNE_MOD_LOG_EXPLAIN'	=> 'All actions listed in the moderation log prior to this value will be deleted. Set this value to 0 to disable the task.',
+	'AUTO_PRUNE_LOG_DAYS'			=> 'Interval between each check',
+));
 
 /*
 * UMIL

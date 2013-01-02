@@ -36,21 +36,16 @@ $mod_name = 'AUTO_PRUNE_LOGS';
 $version_config_name = 'auto_prune_logs_version';
 
 // language file which will be included when installing
-$language_file = 'mods/auto_prune_logs';
-
+$language_file = 'mods/info_acp_auto_prune_logs';
+$current_time = time();
 // logo image
 //$logo_img = '';
 
 // array of versions and actions within each
 $versions = array(
 	'1.0.1' => array(
-		// Add new enable/disable config entry
-		'config_add' => array(
-			array('prune_log_next_time', 1200684221, true),
-			array('prune_admin_log_day', 0),
-			array('prune_mod_log_day', 0),
-			array('prune_log_day', 1),
-		),
+		// remove unused language files
+		'custom'	=> 'apl_check_config',
 
 		// Purge cache
 		'cache_purge' => '',
@@ -60,4 +55,50 @@ $versions = array(
 // Include the UMIF Auto file and everything else will be handled automatically.
 include($phpbb_root_path . 'umil/umil_auto.' . $phpEx);
 
+/*
+* Function called for version 1.0.1.
+* 
+* @param string $action The action (install|update|uninstall) will be sent through this.
+* @param string $version The version this is being run for will be sent through this.
+*/
+function apl_check_config($action, $version)
+{
+	global $umil;
+
+	// current time needed for 'prune_log_next_time'
+	$current_time = time();
+
+	$config_ary = array(
+		array('prune_log_next_time', $current_time, true),
+		array('prune_admin_log_day', 0),
+		array('prune_mod_log_day', 0),
+		array('prune_log_day', 1),
+	);
+
+	// Run this when uninstalling
+	if ($action == 'uninstall')
+	{
+		foreach ($config_ary as $config_vars)
+		{
+			$umil->config_remove($config_vars[0]);
+		}
+		unset($config_vars);
+	}
+	else
+	{
+
+		foreach ($config_ary as $config_vars)
+		{
+			if ($umil->config_exists($config_vars[0]))
+			{
+				$umil->config_update(array($config_vars));
+			}
+			else
+			{
+				$umil->config_add(array($config_vars));
+			}
+		}
+		unset($config_vars);
+	}
+}
 ?>
