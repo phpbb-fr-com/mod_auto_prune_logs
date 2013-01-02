@@ -1,14 +1,18 @@
 <?php
-//
-//	file: includes/hooks/hook_apl.php
-//	author: phpbb-fr mod team
-//	author: ernadoo
-//	begin: 02/01/2013
-//	version: 1.0.0 - 02/01/2013
-//	licence: http://opensource.org/licenses/gpl-license.php GNU Public License
-//
+/**
+*
+* @package Auto Prune Logs
+* @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
+* @copyright (c) 2012 http://www.phpbb-fr.com
+* @author Erwan NADER (ErnadoO) ernadoo@phpbb-services.com
+* @copyright (c) 2009 http://www.phpbb-services.com
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
+*
+*/
 
-// ignore
+/**
+* @ignore
+*/
 if (!defined('IN_PHPBB'))
 {
 	exit;
