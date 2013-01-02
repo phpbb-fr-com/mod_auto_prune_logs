@@ -37,7 +37,7 @@ $version_config_name = 'auto_prune_logs_version';
 
 // language file which will be included when installing
 $language_file = 'mods/info_acp_auto_prune_logs';
-$current_time = time();
+
 // logo image
 //$logo_img = '';
 
