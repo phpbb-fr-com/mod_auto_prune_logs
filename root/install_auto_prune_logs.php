@@ -2,7 +2,7 @@
 /**
 *
 * @package Auto Prune Logs
-* @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
+* @author phpBB-fr Team mods@phpbb-fr.com
 * @copyright (c) 2012 http://www.phpbb-fr.com
 * @author Erwan NADER (ErnadoO) ernadoo@phpbb-services.com
 * @copyright (c) 2009 http://www.phpbb-services.com

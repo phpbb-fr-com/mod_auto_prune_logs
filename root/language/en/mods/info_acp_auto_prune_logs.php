@@ -4,7 +4,7 @@
 * info_acp_auto_prune_logs.php [French]
 *
 * @package Auto Prune Logs
-* @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
+* @author phpBB-fr Team mods@phpbb-fr.com
 * @copyright (c) 2012 phpBB-fr MOD Team
 * @author Erwan NADER (ErnadoO) ernadoo@phpbb-services.com
 * @copyright (c) 2009 http://www.phpbb-services.com
