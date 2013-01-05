@@ -13,8 +13,8 @@
 		<github><![CDATA[https://github.com/phpbb-fr-com/mod_auto_prune_logs]]></github>
 		<author-group>
 			<author>
-				<realname><![CDATA[phpBB-fr MODs Team]]></realname>
-				<username><![CDATA[phpBB-fr MODs Team]]></username>
+				<realname><![CDATA[phpBB-fr Team]]></realname>
+				<username><![CDATA[phpBB-fr Team]]></username>
 				<homepage><![CDATA[http://www.phpbb-fr.com]]></homepage>
 				<contributions-group>
 					<contributions status="current" from="2012-12-28" position="Developer"/>
