@@ -4,7 +4,7 @@
 * info_acp_auto_prune_logs.php [French]
 *
 * @package Auto Prune Logs
-* @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
+* @author phpBB-fr Team mods@phpbb-fr.com
 * @copyright (c) 2012 phpBB-fr MOD Team
 * @author Erwan NADER (ErnadoO) ernadoo@phpbb-services.com
 * @copyright (c) 2009 http://www.phpbb-services.com
@@ -59,7 +59,7 @@ $lang = array_merge($lang, array(
 $lang = array_merge($lang, array(
 	'INSTALL_AUTO_PRUNE_LOGS'			=> 'Install Auto Prune Logs',
 	'INSTALL_AUTO_PRUNE_LOGS_CONFIRM'	=> 'Are you ready to install Auto Prune Logs',
-                                        
+
 	'AUTO_PRUNE_LOGS'					=> 'Auto Prune Logs',
 	'AUTO_PRUNE_LOGS_EXPLAIN'			=> 'Install Auto Prune Logs database changes with UMIL auto method.',
 
@@ -68,5 +68,8 @@ $lang = array_merge($lang, array(
 
 	'UPDATE_AUTO_PRUNE_LOGS'			=> 'Update Auto Prune Logs',
 	'UPDATE_AUTO_PRUNE_LOGS_CONFIRM'	=> 'Are you ready to update the Auto Prune Logs?',
+
+	'APL_CHECK_CONFIG_INSTALL'			=> 'Check and update MOD settings',
+	'APL_CHECK_CONFIG_UNINSTALL'		=> 'Remove MOD settings',
 ));
 ?>

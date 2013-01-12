@@ -80,7 +80,7 @@
 	<action-group>
 		<copy>
 			<file from="root/install_auto_prune_logs.php" to="install_auto_prune_logs.php" />
-			<file from="root/include/hooks/hook_auto_prune_logs.php" to="include/hooks/hook_auto_prune_logs.php" />
+			<file from="root/includes/hooks/hook_auto_prune_logs.php" to="includes/hooks/hook_auto_prune_logs.php" />
 			<file from="root/language/en/mods/info_acp_auto_prune_logs.php" to="language/en/mods/info_acp_auto_prune_logs.php" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
