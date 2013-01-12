@@ -59,7 +59,7 @@ $lang = array_merge($lang, array(
 $lang = array_merge($lang, array(
 	'INSTALL_AUTO_PRUNE_LOGS'			=> 'Install Auto Prune Logs',
 	'INSTALL_AUTO_PRUNE_LOGS_CONFIRM'	=> 'Are you ready to install Auto Prune Logs',
-                                        
+
 	'AUTO_PRUNE_LOGS'					=> 'Auto Prune Logs',
 	'AUTO_PRUNE_LOGS_EXPLAIN'			=> 'Install Auto Prune Logs database changes with UMIL auto method.',
 
@@ -68,5 +68,8 @@ $lang = array_merge($lang, array(
 
 	'UPDATE_AUTO_PRUNE_LOGS'			=> 'Update Auto Prune Logs',
 	'UPDATE_AUTO_PRUNE_LOGS_CONFIRM'	=> 'Are you ready to update the Auto Prune Logs?',
+
+	'APL_CHECK_CONFIG_INSTALL'			=> 'Check and update MOD settings',
+	'APL_CHECK_CONFIG_UNINSTALL'		=> 'Remove MOD settings',
 ));
 ?>
