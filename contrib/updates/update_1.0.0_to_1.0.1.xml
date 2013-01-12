@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
-<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
-<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<!--For security purposes, please check: https://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at https://www.phpbb.com/mods/-->
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
-		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Auto Prune Logs (update from 1.0.0 version)]]></title>
-		<title lang="fr"><![CDATA[Délestage automatique des journaux(Mise à jour depuis la version 1.0.0)]]></title>
+		<title lang="en"><![CDATA[Auto Prune Logs: update from 1.0.0 version]]></title>
+		<title lang="fr"><![CDATA[Délestage automatique des journaux : Mise à jour depuis la version 1.0.0]]></title>
 		<description lang="en"><![CDATA[This MOD allows you to schedule an automatic prune of entries of Administration log and Moderation log, which are older than X days. Configuration through the ACP.]]></description>
-		<description lang="fr"><![CDATA[Ce MOD permet de planifier un délestage automatique des entrées des journaux d'administration et modération, qui remontent à plus de X jours définissables depuis l'administration]]></description>
-		<author-notes lang="en"><![CDATA[A idea of Lolovoisin]]></author-notes>
-		<author-notes lang="fr"><![CDATA[Une idée le Lolo le bon voisin]]></author-notes>
+		<description lang="fr"><![CDATA[Ce MOD permet de planifier un délestage automatique des entrées des journaux d'administration et modération, qui remontent à plus de X jours définissables depuis l'administration.]]></description>
+		<author-notes lang="en"><![CDATA[An idea of Lolovoisin.]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Une idée de Lolo le bon voisin.]]></author-notes>
 		<github><![CDATA[https://github.com/phpbb-fr-com/mod_auto_prune_logs]]></github>
 		<author-group>
 			<author>
@@ -40,7 +38,7 @@
 		</installation>
 		<history>
 			<entry>
-				<date>2012-12-28</date>
+				<date>2013-01-12</date>
 				<rev-version>1.0.1</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Fix: $config['prune_log_next_time'] not properly set]]></change>
@@ -72,12 +70,13 @@
 		</history>
 		<link-group>
 			<link type="parent" href="../../install.xml" lang="en">Parent MOD installation</link>
-			<link type="parent" href="../../install.xml" lang="fr">Fichier d’installation parent</link>		</link-group>
+			<link type="parent" href="../../install.xml" lang="fr">Fichier d’installation parent</link>
+		</link-group>
 	</header>
 	<action-group>
 		<copy>
 			<file from="root/install_auto_prune_logs.php" to="install_auto_prune_logs.php" />
-			<file from="root/include/hooks/hook_auto_prune_logs.php" to="include/hooks/hook_auto_prune_logs.php" />
+			<file from="root/includes/hooks/hook_auto_prune_logs.php" to="includes/hooks/hook_auto_prune_logs.php" />
 			<file from="root/language/en/mods/info_acp_auto_prune_logs.php" to="language/en/mods/info_acp_auto_prune_logs.php" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
@@ -124,16 +123,14 @@
 //-- end : Auto Prune Logs --------------------------------------------------------]]></action>
 			</edit>
 			<edit>
-								<find><![CDATA[						'legend{%:1}'					=> 'ACP_SUBMIT_CHANGES',]]></find>
+				<find><![CDATA[						'legend{%:1}'					=> 'ACP_SUBMIT_CHANGES',]]></find>
 				<action type="operation">%:1 +1</action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[install_auto_prune_logs.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Upload all included files.
-Run the installer.
-Purge the cache]]></diy-instructions>
+Run the installer.]]></diy-instructions>
 		<diy-instructions lang="fr"><![CDATA[Transféer tous les fichiers.
-Executer le fichier d’installation.
-Purger le cache]]></diy-instructions>
+Executer le fichier d’installation.]]></diy-instructions>
 	</action-group>
 </mod>
