@@ -7,9 +7,9 @@
 		<title lang="en"><![CDATA[Auto Prune Logs]]></title>
 		<title lang="fr"><![CDATA[Délestage automatique des journaux]]></title>
 		<description lang="en"><![CDATA[This MOD allows you to schedule an automatic prune of entries of Administration log and Moderation log, which are older than X days. Configuration through the ACP.]]></description>
-		<description lang="fr"><![CDATA[Ce MOD permet de planifier un délestage automatique des entrées des journaux d'administration et modération, qui remontent à plus de X jours définissables depuis l'administration]]></description>
-		<author-notes lang="en"><![CDATA[A idea of Lolovoisin]]></author-notes>
-		<author-notes lang="fr"><![CDATA[Une idée le Lolo le bon voisin]]></author-notes>
+		<description lang="fr"><![CDATA[Ce MOD permet de planifier un délestage automatique des entrées des journaux d'administration et modération, qui remontent à plus de X jours définissables depuis l'administration.]]></description>
+		<author-notes lang="en"><![CDATA[An idea of Lolovoisin.]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Une idée de Lolo le bon voisin.]]></author-notes>
 		<github><![CDATA[https://github.com/phpbb-fr-com/mod_auto_prune_logs]]></github>
 		<author-group>
 			<author>
@@ -38,7 +38,7 @@
 		</installation>
 		<history>
 			<entry>
-				<date>2012-12-28</date>
+				<date>2013-01-12</date>
 				<rev-version>1.0.1</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Fix: $config['prune_log_next_time'] not properly set]]></change>
