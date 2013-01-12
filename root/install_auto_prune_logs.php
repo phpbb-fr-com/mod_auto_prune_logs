@@ -2,7 +2,7 @@
 /**
 *
 * @package Auto Prune Logs
-* @author phpBB-fr MODs Team phpbbfr.mods@gmail.com
+* @author phpBB-fr Team mods@phpbb-fr.com
 * @copyright (c) 2012 http://www.phpbb-fr.com
 * @author Erwan NADER (ErnadoO) ernadoo@phpbb-services.com
 * @copyright (c) 2009 http://www.phpbb-services.com
@@ -44,7 +44,7 @@ $language_file = 'mods/info_acp_auto_prune_logs';
 // array of versions and actions within each
 $versions = array(
 	'1.0.1' => array(
-		// remove unused language files
+		// function needed for installing/uninstalling/updating a non UMIL version of the MOD
 		'custom'	=> 'apl_check_config',
 
 		// Purge cache
@@ -63,7 +63,7 @@ include($phpbb_root_path . 'umil/umil_auto.' . $phpEx);
 */
 function apl_check_config($action, $version)
 {
-	global $umil;
+	global $umil, $db;
 
 	// current time needed for 'prune_log_next_time'
 	$current_time = time();
@@ -83,6 +83,8 @@ function apl_check_config($action, $version)
 			$umil->config_remove($config_vars[0]);
 		}
 		unset($config_vars);
+		
+		return array('command' => 'APL_CHECK_CONFIG_UNINSTALL', 'result' => 'SUCCESS');
 	}
 	else
 	{
@@ -92,6 +94,15 @@ function apl_check_config($action, $version)
 			if ($umil->config_exists($config_vars[0]))
 			{
 				$umil->config_update(array($config_vars));
+
+				// config_update doesn't allow to update is_dynamic. So, we update it manually.
+				if (!empty($config_vars[2]))
+				{
+					$sql = 'UPDATE ' . CONFIG_TABLE . "
+						SET is_dynamic = '" . $db->sql_escape($config_vars[2]) . "'
+						WHERE config_name = '" . $db->sql_escape($config_vars[0]) . "'";
+					$db->sql_query($sql);
+				}
 			}
 			else
 			{
@@ -99,6 +110,8 @@ function apl_check_config($action, $version)
 			}
 		}
 		unset($config_vars);
+
+		return array('command' => 'APL_CHECK_CONFIG_INSTALL', 'result' => 'SUCCESS');
 	}
 }
 ?>
